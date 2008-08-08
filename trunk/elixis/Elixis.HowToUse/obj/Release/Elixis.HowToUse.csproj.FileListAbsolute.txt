@@ -5,3 +5,10 @@ C:\Users\nsi\Desktop\Elixis\Elixis.HowToUse\bin\Release\Elixis.pdb
 C:\Users\nsi\Desktop\Elixis\Elixis.HowToUse\obj\Release\ResolveAssemblyReference.cache
 C:\Users\nsi\Desktop\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.exe
 C:\Users\nsi\Desktop\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.exe
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.HowToUse.exe
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.HowToUse.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.dll
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Release\ResolveAssemblyReference.cache
