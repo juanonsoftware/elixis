@@ -1,0 +1,5 @@
+C:\Users\nsi\Desktop\Elixis\Elixis\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\nsi\Desktop\Elixis\Elixis\bin\Debug\Elixis.dll
+C:\Users\nsi\Desktop\Elixis\Elixis\bin\Debug\Elixis.pdb
+C:\Users\nsi\Desktop\Elixis\Elixis\obj\Debug\Elixis.dll
+C:\Users\nsi\Desktop\Elixis\Elixis\obj\Debug\Elixis.pdb
