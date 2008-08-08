@@ -3,3 +3,8 @@ C:\Users\nsi\Desktop\Elixis\Elixis\bin\Debug\Elixis.dll
 C:\Users\nsi\Desktop\Elixis\Elixis\bin\Debug\Elixis.pdb
 C:\Users\nsi\Desktop\Elixis\Elixis\obj\Debug\Elixis.dll
 C:\Users\nsi\Desktop\Elixis\Elixis\obj\Debug\Elixis.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis\bin\Debug\Elixis.dll
+D:\NSi Files\Programs\C#\Elixis\Elixis\bin\Debug\Elixis.pdb
+D:\NSi Files\Programs\C#\Elixis\Elixis\obj\Debug\ResolveAssemblyReference.cache
+D:\NSi Files\Programs\C#\Elixis\Elixis\obj\Debug\Elixis.dll
+D:\NSi Files\Programs\C#\Elixis\Elixis\obj\Debug\Elixis.pdb
