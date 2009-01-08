@@ -30,8 +30,8 @@ namespace Elixis.HowToUse
 {
     class Program
     {
-        private static AESEncryptor fAESEncryptor = new AESEncryptor();
-        private static TripleDESEncryptor fTripleDESEncryptor = new TripleDESEncryptor();
+        private static AESEncryptor fAESEncryptor = new AESEncryptor("My Password", AESBits.BITS256);
+        private static TripleDESEncryptor fTripleDESEncryptor = new TripleDESEncryptor("My Password");
         private static MD5Encryptor fMD5Encryptor = new MD5Encryptor();
 
         static void Main(string[] args)
@@ -42,35 +42,22 @@ namespace Elixis.HowToUse
             Console.WriteLine("AES Encryption \n ");
             
             // Encrypt with AES.
-            string AES128 = fAESEncryptor.Encrypt(originalText, password, AESBits.BITS128);
-            Console.WriteLine("AES 128: " + AES128);
-                        
-            byte [] AES192 = fAESEncryptor.Encrypt(Encoding.ASCII.GetBytes(originalText), password, AESBits.BITS192);
-            Console.WriteLine("AES 192: " + Encoding.Default.GetString(AES192));
-            
-            string AES256 = fAESEncryptor.Encrypt(originalText, password, AESBits.BITS256);
-            Console.WriteLine("AES 256: " + AES256);
-            
+            string encryptedAESString = fAESEncryptor.Encrypt(originalText);
+            Console.WriteLine("Encrypted AES: " + encryptedAESString);
+
             // Decrypt with AES.
-            string decryptedAES128 = fAESEncryptor.Decrypt(AES128, password, AESBits.BITS128);
-            Console.WriteLine("Decrypted AES 128: " + decryptedAES128);
-            
-            byte[] decryptedAES192 = fAESEncryptor.Decrypt(AES192, password, AESBits.BITS192);
-            Console.WriteLine("Decrypted AES 192: " + Encoding.ASCII.GetString(decryptedAES192));
-            
-            string decryptedAES256 = fAESEncryptor.Decrypt(AES256, password, AESBits.BITS256);
-            Console.WriteLine("Decrypted AES 256: " + decryptedAES256);
-            
+            string decryptedAESString = fAESEncryptor.Decrypt(encryptedAESString);
+            Console.WriteLine("Decrypted AES: " + decryptedAESString);
             
             Console.WriteLine("\n\nTripleDES Encryption \n ");
 
             // Encrypt with TripleDES.
-            byte[] tripleDES = fTripleDESEncryptor.Encrypt(Encoding.ASCII.GetBytes(originalText), password);
-            Console.WriteLine("TripleDES: " + Encoding.Default.GetString(tripleDES));
+            byte[] tripleDESEncryptedString = fTripleDESEncryptor.Encrypt(Encoding.ASCII.GetBytes(originalText));
+            Console.WriteLine("Encrypted TripleDES: " + Encoding.Default.GetString(tripleDESEncryptedString));
             
             // Decrypt with TripleDES.
-            byte[] decryptedtripleDES = fTripleDESEncryptor.Decrypt(tripleDES, password);
-            Console.WriteLine("Decrypted TripleDES: " + Encoding.Default.GetString(decryptedtripleDES));
+            byte[] tripleDESDecryptedString = fTripleDESEncryptor.Decrypt(tripleDESEncryptedString);
+            Console.WriteLine("Decrypted TripleDES: " + Encoding.Default.GetString(tripleDESDecryptedString));
 
             Console.WriteLine("\n\nMD5 Encryption \n ");
             
@@ -81,7 +68,6 @@ namespace Elixis.HowToUse
             string md5_bytes = fMD5Encryptor.GetMD5(Encoding.ASCII.GetBytes(originalText));
             Console.WriteLine("MD5_bytes: " + md5_bytes);
                                
-
             Console.Read();
         }
     }

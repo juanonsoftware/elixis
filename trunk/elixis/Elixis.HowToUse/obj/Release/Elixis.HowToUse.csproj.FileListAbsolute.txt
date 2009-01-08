@@ -12,3 +12,10 @@ D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.HowToUse.pdb
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.dll
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Release\Elixis.pdb
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.exe
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\obj\Release\Elixis.HowToUse.pdb
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\bin\Release\Elixis.HowToUse.exe
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\bin\Release\Elixis.HowToUse.pdb
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\bin\Release\Elixis.dll
+C:\Users\Administrator\Desktop\Elixis\Elixis.HowToUse\bin\Release\Elixis.pdb
