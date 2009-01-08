@@ -1,6 +1,6 @@
 ﻿/*The MIT License
 
-Copyright (c) 2008 Nikos K. Siatras
+Copyright (c) 2008-2009 codeforte.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,40 @@ using System.IO;
 using System.Security.Cryptography;
 using Elixis.EncryptionOptions;
 
+/**
+ *
+ * @author Nikos Siatras
+ */
 namespace Elixis
 {
     public class AESEncryptor
     {
-        public AESEncryptor()
+        private string fPassword;
+        private AESBits fEncryptionBits;
+        private byte[] fSalt = new byte[] { 0x00, 0x01, 0x02, 0x1C, 0x1D, 0x1E, 0x03, 0x04, 0x05, 0x0F, 0x20, 0x21, 0xAD, 0xAF, 0xA4 };
+
+        /// <summary>
+        /// Initialize new AESEncryptor.
+        /// </summary>
+        /// <param name="password">The password to use for encryption/decryption.</param>
+        /// <param name="encryptionBits">Encryption bits (128,192,256).</param>
+        public AESEncryptor(string password, AESBits encryptionBits)
         {
+            fPassword = password;
+            fEncryptionBits = encryptionBits;
+        }
+        
+        /// <summary>
+        /// Initialize new AESEncryptor.
+        /// </summary>
+        /// <param name="password">The password to use for encryption/decryption.</param>
+        /// <param name="encryptionBits">Encryption bits (128,192,256).</param>
+        /// <param name="salt">Salt bytes. Bytes length must be 15.</param>
+        public AESEncryptor(string password, AESBits encryptionBits, byte[] salt)
+        {
+            fPassword = password;
+            fEncryptionBits = encryptionBits;
+            fSalt = salt;
         }
 
         private byte[] iEncrypt(byte[] data, byte[] key, byte[] iV)
@@ -56,28 +84,22 @@ namespace Elixis
         /// Encrypt string with AES algorith.
         /// </summary>
         /// <param name="data">String to encrypt.</param>
-        /// <param name="password">Password to use for encryption.</param>
-        /// <param name="bits">Encryption bits.</param>
-        /// <returns>Encrypted string.</returns>
-        public string Encrypt(string data, string password, AESBits bits)
+        public string Encrypt(string data)
         {
             byte[] clearBytes = System.Text.Encoding.Unicode.GetBytes(data);
 
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, new byte[] { 0x00, 0x01, 0x02, 0x1C, 0x1D, 0x1E, 0x03, 0x04, 0x05, 0x0F, 0x20, 0x21, 0xAD, 0xAF, 0xA4 });
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(fPassword, fSalt);
 
-            switch (bits)
+            switch (fEncryptionBits)
             {
                 case AESBits.BITS128:
                     return Convert.ToBase64String(iEncrypt(clearBytes, pdb.GetBytes(16), pdb.GetBytes(16)));
-                    break;
 
                 case AESBits.BITS192:
                     return Convert.ToBase64String(iEncrypt(clearBytes, pdb.GetBytes(24), pdb.GetBytes(16)));
-                    break;
 
                 case AESBits.BITS256:
                     return Convert.ToBase64String(iEncrypt(clearBytes, pdb.GetBytes(32), pdb.GetBytes(16)));
-                    break;
             }
             return null;
         }
@@ -86,25 +108,19 @@ namespace Elixis
         /// Encrypt byte array with AES algorithm.
         /// </summary>
         /// <param name="data">Bytes to encrypt.</param>
-        /// <param name="password">Password to use for encryption.</param>
-        /// <param name="bits">Encryption bits.</param>
-        /// <returns>Encrypted bytes.</returns>
-        public byte[] Encrypt(byte[] data, string password, AESBits bits)
+        public byte[] Encrypt(byte[] data)
         {
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, new byte[] { 0x00, 0x01, 0x02, 0x1C, 0x1D, 0x1E, 0x03, 0x04, 0x05, 0x0F, 0x20, 0x21, 0xAD, 0xAF, 0xA4 });
-            switch (bits)
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(fPassword,  fSalt);
+            switch (fEncryptionBits)
             {
                 case AESBits.BITS128:
                     return iEncrypt(data, pdb.GetBytes(16), pdb.GetBytes(16));
-                    break;
 
                 case AESBits.BITS192:
                     return iEncrypt(data, pdb.GetBytes(24), pdb.GetBytes(16));
-                    break;
 
                 case AESBits.BITS256:
                     return iEncrypt(data, pdb.GetBytes(32), pdb.GetBytes(16));
-                    break;
             }
             return null;
         }
@@ -127,28 +143,22 @@ namespace Elixis
         /// Decrypt string with AES algorithm.
         /// </summary>
         /// <param name="data">Encrypted string.</param>
-        /// <param name="password">Password has been used for encryption.</param>
-        /// <param name="bits">Encryption bits.</param>
-        /// <returns>Decrypted string.</returns>
-        public string Decrypt(string data, string password, AESBits bits)
+        public string Decrypt(string data)
         {
             byte[] dataToDecrypt = Convert.FromBase64String(data);
 
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, new byte[] { 0x00, 0x01, 0x02, 0x1C, 0x1D, 0x1E, 0x03, 0x04, 0x05, 0x0F, 0x20, 0x21, 0xAD, 0xAF, 0xA4 });
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(fPassword,  fSalt);
 
-            switch (bits)
+            switch (fEncryptionBits)
             {
                 case AESBits.BITS128:
                     return System.Text.Encoding.Unicode.GetString(iDecrypt(dataToDecrypt, pdb.GetBytes(16), pdb.GetBytes(16)));
-                    break;
 
                 case AESBits.BITS192:
                     return System.Text.Encoding.Unicode.GetString(iDecrypt(dataToDecrypt, pdb.GetBytes(24), pdb.GetBytes(16)));
-                    break;
 
                 case AESBits.BITS256:
                     return System.Text.Encoding.Unicode.GetString(iDecrypt(dataToDecrypt, pdb.GetBytes(32), pdb.GetBytes(16)));
-                    break;
             }
             return null;
         }
@@ -157,30 +167,50 @@ namespace Elixis
         /// Decrypt byte array with AES algorithm.
         /// </summary>
         /// <param name="data">Encrypted byte array.</param>
-        /// <param name="password">Password has been used for encryption.</param>
-        /// <param name="bits">Encryption bits.</param>
-        /// <returns>Decrypted byte array.</returns>
-        public byte[] Decrypt(byte[] data, string password, AESBits bits)
+        public byte[] Decrypt(byte[] data)
         {
-            PasswordDeriveBytes pdb = new PasswordDeriveBytes(password, new byte[] { 0x00, 0x01, 0x02, 0x1C, 0x1D, 0x1E, 0x03, 0x04, 0x05, 0x0F, 0x20, 0x21, 0xAD, 0xAF, 0xA4 });
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(fPassword, fSalt);
 
-            switch (bits)
+            switch (fEncryptionBits)
             {
                 case AESBits.BITS128:
                     return iDecrypt(data, pdb.GetBytes(16), pdb.GetBytes(16));
-                    break;
 
                 case AESBits.BITS192:
                     return iDecrypt(data, pdb.GetBytes(24), pdb.GetBytes(16));
-                    break;
 
                 case AESBits.BITS256:
                     return iDecrypt(data, pdb.GetBytes(32), pdb.GetBytes(16));
-                    break;
             }
             return null;
         }
 
+        /// <summary>
+        /// Encryption/Decryption password.
+        /// </summary>
+        public string Password
+        {
+            get { return fPassword; }
+            set { fPassword = value; }
+        }
+
+        /// <summary>
+        /// Encryption/Decryption bits.
+        /// </summary>
+        public AESBits EncryptionBits
+        {
+            get { return fEncryptionBits; }
+            set { fEncryptionBits = value; }
+        }
+
+        /// <summary>
+        /// Salt bytes (bytes length must be 15).
+        /// </summary>
+        public byte[] Salt
+        {
+            get { return fSalt; }
+            set { fSalt = value; }
+        }
     }
 
 }
