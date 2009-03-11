@@ -12,3 +12,5 @@ D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\bin\Debug\Elixis.pdb
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Debug\ResolveAssemblyReference.cache
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.exe
 D:\NSi Files\Programs\C#\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.pdb
+D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.exe
+D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.pdb
