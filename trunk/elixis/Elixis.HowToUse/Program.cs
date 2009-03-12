@@ -35,7 +35,7 @@ namespace Elixis.HowToUse
         private static MD5Encryptor fMD5Encryptor = new MD5Encryptor();
 
         static void Main(string[] args)
-        {
+        {          
             string originalText = "Hello! This is Elixis...";
             string password = "My Password";
 
