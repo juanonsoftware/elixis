@@ -19,3 +19,5 @@ D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\bin\Debug\Elixis.HowToUse.pd
 D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\bin\Debug\Elixis.dll
 D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\bin\Debug\Elixis.pdb
 D:\Development\CodeForte.org\Elixis\Elixis.HowToUse\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\NikoSoft\Projects\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.exe
+D:\Development\NikoSoft\Projects\Elixis\Elixis.HowToUse\obj\Debug\Elixis.HowToUse.pdb
